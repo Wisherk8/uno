@@ -6,8 +6,11 @@
 
 Для запуска на все интерфейсах
 
-export FLASK_ENV=development\n
-export FLASK_APP=web.py\n
-flask run --host=0.0.0.0\n
+export FLASK_ENV=development
+
+export FLASK_APP=web.py
+
+flask run --host=0.0.0.0
+
 
 
