@@ -141,6 +141,8 @@ game = Game(3)
 
 @app.route('/uno')
 def uno():
+    address = f"{request.remote_addr}:5000"
+
     for player in game.players:
         if  len(player.cards) == 0:
             game.gameover = True
@@ -214,6 +216,7 @@ def uno():
         return out
     out += f"<br> Карта на столе {game.digit2word(game.card_on_table)}"
     out += f"<br> Осталось карт в колоде - {len(game.coloda.cards)}"
+
     if game.turn == player and not game.has_get_card:
         out += "<br>Ваш ход"
         out += f"<br> <a href='http://{address}/uno?player={player}&cmd=get'>Взять карту</a> <br>"
@@ -224,7 +227,7 @@ def uno():
         out += f"<br> Ход игрока {game.turn}"
     print(out)
     resp = Response(out)
-    resp.headers['refresh'] = "3"
+    resp.headers['refresh'] = "2"
     return resp
 
 
